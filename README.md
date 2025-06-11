@@ -1,103 +1,133 @@
 # 🏃 Ultra-Marathon Race Analysis (USA, 2020) – 50K & 50Mi Insights
 
-This project explores performance trends in ultra-marathon races using data science techniques in Python. By focusing on 50-kilometer and 50-mile races held in the United States in 2020, I aimed to uncover insights related to **gender performance**, **age group effectiveness**, and **seasonal impact on athlete speed**.
+This is a self-directed tutorial project using Python to analyze performance trends in ultra-marathon races. The goal was to develop and showcase practical skills in **data cleaning**, **exploration**, and **visual storytelling**, while working with a large, real-world dataset from Kaggle.
+
+Using Pandas and Seaborn, I focused on a filtered subset of ultra-marathon events — specifically **50-kilometer** and **50-mile** races in the **USA during 2020** — to explore performance differences by **gender**, **age group**, and **season**.
 
 🔗 **Dataset Source**: [The Big Dataset of Ultra Marathon Running on Kaggle](https://www.kaggle.com/datasets/aiaiaidavid/the-big-dataset-of-ultra-marathon-running)
 
 ---
 
-## 🚀 Project Goals
+## 🧠 About the Dataset
 
-- 🎯 Understand performance differences between **male and female runners**
-- 📊 Identify **top and bottom-performing age groups** in 50-mile races
-- 🌦️ Analyze if **seasonal changes** (e.g., summer vs. winter) affect athlete speed
-- 🧠 Practice data cleaning, feature engineering, and visual storytelling
+According to Wikipedia, an **ultramarathon** is any race longer than the standard 42.195 km marathon distance. Common distances include **50K**, **100K**, **50 miles**, and **100 miles**, with some races extending beyond 200 miles. These events test the endurance and mental toughness of athletes worldwide.
 
----
+The dataset contains:
 
-## 📁 Dataset Focus
+- 🗓️ **7.4 million race records** (1798–2022)
+- 👟 **1.6 million unique runners**
+- 📍 Global events from public sources
+- ✅ Anonymized data using unique `Athlete ID`s
 
-From a large global dataset, I filtered the data down to:
-- 🇺🇸 **USA-only** races  
-- 🏁 **50K or 50Mi** distances  
-- 📅 **Year 2020**
+Key columns include:
 
-I also identified two races I personally ran in: **Sarasota** and **Everglades**, adding a personal layer to the analysis.
-
----
-
-## 🔧 Process Overview
-
-### 1. 📥 Data Import & Initial Exploration
-- Loaded the dataset using Pandas
-- Previewed structure, columns, data types, and null values
-
-### 2. 🧹 Data Cleaning & Filtering
-- Filtered by:
-  - `event_country == 'USA'`
-  - `race_length == '50km' or '50mi'`
-  - `event_year == 2020`
-- Removed “(USA)” from event names
-- Cleaned time and speed data for numeric analysis
-- Dropped unnecessary columns like athlete club, country, birth year
-- Checked for nulls, duplicates, and reset the index
-
-### 3. 🧠 Feature Engineering
-- Created a `season` column based on race month:
-  - Winter: Dec–Feb
-  - Spring: Mar–May
-  - Summer: Jun–Aug
-  - Fall: Sep–Nov
-- Cleaned and cast columns for analysis (e.g. float conversion of speed, performance time)
-- Renamed columns to snake_case for consistency
+- Event name, date, and distance
+- Athlete performance time
+- Athlete gender and age
+- Average speed (km/h)
+- Number of finishers
 
 ---
 
-## 🔍 Key Questions Answered
+## 📁 Dataset Access
 
-1. **Who’s faster: men or women in 50k/50mi races?**
-2. **What are the top 15 age groups in 50mi races (20+ races)?**
-3. **What are the bottom 20 age groups in 50mi races (10+ races)?**
-4. **Is athlete speed lower in summer vs. winter?**
+Due to file size limitations, the full dataset is **not included** in this repo.  
+Please download it manually from Kaggle:
 
----
+🔗 [Download Dataset on Kaggle](https://www.kaggle.com/datasets/aiaiaidavid/the-big-dataset-of-ultra-marathon-running)
 
-## 📊 Visualizations & Methods
-
-Used **Seaborn** and **Matplotlib** to explore trends through:
-
-- `sns.histplot()` for gender vs distance distributions  
-- `sns.displot()` to show speed distributions in 50mi races  
-- `sns.violinplot()` for gender-based speed spreads in both race types  
-- `sns.lmplot()` for regression of age vs speed by gender  
-- Custom grouping and aggregation logic for age group performance  
-- Seasonal comparisons with bar plots for average speeds  
+After downloading, place the dataset in the same folder as the Jupyter notebook to run the code.
 
 ---
 
-## 📈 Tools Used
+## 🚀 Project Objectives
 
-- 🐍 **Python (Jupyter Notebook)**
-- 🧮 **Pandas** – for cleaning, filtering, calculations
-- 📉 **Seaborn** – for visualization
-- 💬 Markdown – for clean documentation and storytelling
+This tutorial project was built to explore and practice:
 
----
-
-## 🏁 Personal Note
-
-This project blends technical analysis with personal context — having run two of the races in the dataset made the process even more rewarding. It demonstrates how data analysis can provide meaningful narratives beyond just numbers.
+- 📊 Comparing **performance by gender** across 50K and 50Mi races
+- 🎯 Identifying **best and worst performing age groups** in 50Mi races
+- 🌦️ Investigating if **seasonal changes** affect average runner speed
+- 🧹 Strengthening skills in data cleaning, transformation, and visualization
 
 ---
 
-## 🔗 Project Files
+## 🛠️ Tools Used
 
-- 📘 `TWO_CENTURIES_OF_UM_RACES.ipynb` – Full notebook with code and analysis  
-- 🗎 `TWO_CENTURIES_OF_UM_RACES.csv` – CSV version RAW Dataset 
+- 🐍 Python (Jupyter Notebook)
+- 🧮 Pandas for data wrangling
+- 📊 Seaborn for data visualization
+- 📁 Kaggle for dataset source
 
 ---
 
-## 📬 Let’s Connect
+## 🔧 Workflow Summary
 
-If you're a recruiter or fellow data enthusiast looking for collaborative talent, feel free to reach out. I'm actively exploring roles in **data analysis** or **data storytelling** using Python.
+### 1. 📥 Load & Inspect
+- Imported the dataset using Pandas
+- Reviewed data types, columns, and null values
+
+### 2. 🧹 Clean & Filter
+- Filtered for:
+  - Country: **USA**
+  - Distance: **50K** or **50Mi**
+  - Year: **2020**
+- Cleaned up:
+  - Event names (removed "(USA)")
+  - Athlete performance times and speeds
+  - Age column formatting
+- Dropped unused columns (e.g., club, country, year of birth)
+- Created new features like `season` based on race date
+
+### 3. 📊 Analyze & Visualize
+- Plotted speed distribution by gender
+- Compared age groups (min 10–20 races) for performance rankings
+- Visualized seasonal trends in average speed
+
+---
+
+## ❓ Questions Explored
+
+1. 🧍‍♂️🧍‍♀️ How do **male and female runners** differ in average speed for 50K and 50Mi races?
+2. 🎂 Which **age groups** perform best or worst in 50Mi races with at least 10 or 20 entries?
+3. 🌦️ Does **season** (winter, spring, summer, fall) influence average running speed?
+
+---
+
+## 📈 Visuals
+
+Created using `seaborn`:
+
+- `sns.histplot()` – race length by gender  
+- `sns.displot()` – speed distribution (50Mi)  
+- `sns.violinplot()` – speed vs. gender for both distances  
+- `sns.lmplot()` – age vs. speed regression by gender  
+
+These charts helped communicate trends across gender, age, and seasonal splits clearly.
+
+---
+
+## 📎 Files in This Repo
+
+- 📘 `TWO_CENTURIES_OF_UM_RACES.ipynb` – Jupyter notebook with all code and visualizations  
+- 📝 `README.md` – This documentation
+
+---
+
+## 💡 Takeaways
+
+This project gave me hands-on experience working with:
+
+- A large, messy real-world dataset
+- Data wrangling and feature engineering in Pandas
+- Clear, accessible visual storytelling using Seaborn
+- Deriving insights from filtered subsets of data
+
+It’s a strong step toward applying data analysis skills to practical questions, and I look forward to building more projects like this.
+
+---
+
+## 📬 Contact
+
+I'm actively building my portfolio and seeking opportunities in **data analysis** and **data storytelling** roles.  
+If this work resonates with you or your team, feel free to reach out!
 
